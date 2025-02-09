@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.15..3.31)
 
 set(CMAKE_CXX_STANDARD 26)
 
-project(example_project
+project(project-name
     VERSION 1.0
     DESCRIPTION "Some C++ Project"
     LANGUAGES CXX)

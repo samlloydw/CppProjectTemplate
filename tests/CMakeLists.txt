@@ -1,4 +1,5 @@
-add_executable(testlib test_utils.cpp)
+add_executable(testlib test_utils.cpp
+    ${PROJECT_SOURCE_DIR}/include/${PROJECT_NAME}/example_header.hpp)
 
 target_compile_features(testlib PRIVATE cxx_std_26)
 

@@ -1,4 +1,4 @@
-set(HEADER_LIST "${PROJECT_SOURCE_DIR}/include/project-name/example_header.hpp")
+set(HEADER_LIST "${PROJECT_SOURCE_DIR}/include/${PROJECT_NAME}/example_header.hpp")
 
 add_library(utils STATIC utils.cpp "${HEADER_LIST}")
 target_include_directories(utils PUBLIC "${PROJECT_SOURCE_DIR}/include")
