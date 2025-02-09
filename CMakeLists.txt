@@ -40,15 +40,9 @@ endif()
 # external packages
 find_package(Boost REQUIRED)
 
-# add headers so they show up in IDEs
-add_executable(main apps/main.cpp include/project-name/example_header.hpp)
-# add_library(some_lib STATIC src/source.cpp include/header.hpp)
-
 add_subdirectory(src)
 add_subdirectory(apps)
 if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
     add_subdirectory(tests)
 endif()
-
-target_link_libraries(main PRIVATE utils)
 
