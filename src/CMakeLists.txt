@@ -1,12 +1,12 @@
-set(HEADER_LIST "${CMAKE_CURRENT_SOURCE_DIR}/include/lib.hh")
+set(HEADER_LIST "${PROJECT_SOURCE_DIR}/include/project-name/example_header.hpp")
 
-add_library(another_lib STATIC lib.cc "${HEADER_LIST}")
-target_include_directories(another_lib PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
-target_link_libraries(some_lib PUBLIC another_lib)
-target_compile_features(another_lib PUBLIC cxx_std_20)
+add_library(utils STATIC utils.cpp "${HEADER_LIST}")
+target_include_directories(utils PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
+target_link_libraries(utils PUBLIC another_lib)
+# target_compile_features(another_lib PUBLIC cxx_std_26)
 
 # IDEs put headers in nice place
-source_group(
-    TREE "${PROJECT_SOURCE_DIR}/include"
+source_group(TREE "${PROJECT_SOURCE_DIR}/include"
     PREFIX "Header Files"
-    FILES "${HEADER_LIST})
+    FILES "${HEADER_LIST}")
+

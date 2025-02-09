@@ -1,17 +1,16 @@
 cmake_minimum_required(VERSION 3.15..3.31)
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 26)
 
-project(<ProjectNameHere>
+project(example_project
     VERSION 1.0
-    DESCRIPTION "Some C++ project"
+    DESCRIPTION "Some C++ Project"
     LANGUAGES CXX)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
 
-
 # Cmake does an empty build type. Set default
-set(default_build_type "Release")
+set(default_build_type "Debug")
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
   message(STATUS "Setting build type to '${default_build_type}' as none was specified.")
   set(CMAKE_BUILD_TYPE "${default_build_type}" CACHE
@@ -28,7 +27,7 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
     set(CMAKE_CXX_EXTENSIONS OFF)
 
     include(CTest)
-    find_package(gtest REQUIRED)
+    find_package(GTest REQUIRED)
 
     find_package(Doxygen)
     if(Doxygen_FOUND)
@@ -39,17 +38,17 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 endif()
 
 # external packages
-# find_package(Boost REQUIRED)
+find_package(Boost REQUIRED)
 
 # add headers so they show up in IDEs
-# add_executable(some_exec apps/source.cc include/header.hh)
-# add_library(some_lib STATIC src/source.cc include/header.hh)
+add_executable(main apps/main.cpp include/project-name/example_header.hpp)
+# add_library(some_lib STATIC src/source.cpp include/header.hpp)
 
 add_subdirectory(src)
 add_subdirectory(apps)
 if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
-    add_subdirectory(test)
+    add_subdirectory(tests)
 endif()
 
-# target_link_libraries(some_exec PRIVATE some_lib)
+target_link_libraries(main PRIVATE utils)
 
